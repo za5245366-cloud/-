@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المهندس أبو داود | رواتر وكاميرات</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0ea5e9">
+<style>
+*{box-sizing:border-box}body{font-family:Arial;margin:0;background:#f1f5f9;color:#111}
+.top{background:linear-gradient(135deg,#0284c7,#0ea5e9);color:#fff;padding:35px 15px;text-align:center;border-radius:0 0 30px 30px}
+.top h1{margin:0;font-size:38px}.top p{font-size:18px}
+.top span{background:#facc15;color:#000;padding:7px 18px;border-radius:20px;display:inline-block;margin-top:10px;font-weight:bold}
+.wrap{max-width:650px;margin:auto;padding:15px}
+.card{background:#fff;padding:20px;border-radius:20px;margin:15px 0;box-shadow:0 4px 15px #0001}
+.card h2{margin:0 0 10px;color:#0284c7}
+.card p{line-height:1.9;font-size:17px;margin:6px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt{background:#e0f2fe;padding:15px;border-radius:15px;cursor:pointer;text-align:center;font-weight:bold;border:2px solid transparent}
+.opt.active{border-color:#0284c7;background:#bae6fd}
+input,select,textarea{width:100%;padding:13px;margin:8px 0;border-radius:12px;border:1px solid #ddd;font-size:16px;font-family:Arial}
+.btn{display:block;text-align:center;background:#25D366;color:#fff;padding:16px;border-radius:14px;text-decoration:none;font-size:20px;font-weight:bold;margin:10px 0;border:none;cursor:pointer;width:100%}
+.btn-call{background:#111}
+.float{position:fixed;bottom:15px;left:15px;right:15px;display:flex;gap:10px;max-width:650px;margin:auto}
+.float a{flex:1}
+.badge2{background:#ecfdf5;color:#065f46;padding:10px;border-radius:12px;text-align:center;font-weight:bold}
+</style>
+</head>
+<body>
+
+<div class="top">
+<h1>المهندس أبو داود</h1>
+<p>برمجة وتركيب الرواتر 📶 | تركيب كاميرات المراقبة 📹</p>
+<span>الجلاوية - ساقلتة - سوهاج</span>
+</div>
+
+<div class="wrap">
+<div class="badge2">✅ معاينة وتركيب لحد البيت - ضمان على الشغل - اسعار على قد الايد</div>
+
+<div class="card">
+<h2>🌐 الرواتر والنت</h2>
+<p>✔ برمجة كل الرواتر WE - فودافون - اتصالات - اورنج</p>
+<p>✔ ظبط الواي فاي وتقوية الشبكة في البيت كله</p>
+<p>✔ حل مشكلة الفصل والبطء</p>
+<p>✔ تركيب اكسس بوينت وتوسيع التغطية</p>
+<p>✔ حماية الراوتر من الاختراق</p>
+</div>
+
+<div class="card">
+<h2>📹 كاميرات المراقبة</h2>
+<p>✔ تركيب كاميرات للبيت - المحل - المزرعة - المخزن</p>
+<p>✔ تركيب DVR وربط الكاميرات بالموبايل وتشوفها وانت بره</p>
+<p>✔ صيانة وتركيب هارد وظبط الرؤية الليلية</p>
+<p>✔ تمديد سلوك نضيف من غير بهدلة</p>
+</div>
+
+<div class="card">
+<h2>اطلب خدمتك دلوقتي 👇</h2>
+<p>اختار الخدمة واكتب اسمك والعنوان، وهتتبعتلي واتساب على طول:</p>
+<div class="grid">
+<div class="opt active" onclick="selectService(this,'تركيب راوتر')">📶 تركيب راوتر</div>
+<div class="opt" onclick="selectService(this,'برمجة راوتر')">⚙️ برمجة راوتر</div>
+<div class="opt" onclick="selectService(this,'تركيب كاميرات')">📹 تركيب كاميرات</div>
+<div class="opt" onclick="selectService(this,'صيانة كاميرات')">🔧 صيانة كاميرات</div>
+</div>
+<input id="name" placeholder="اسمك">
+<input id="place" placeholder="العنوان - مثال: الجلاوية">
+<textarea id="msg" placeholder="اكتب مشكلتك او طلبك..."></textarea>
+<button class="btn" onclick="sendWhats()">ابعت الطلب واتساب 💬</button>
+</div>
+
+<div style="height:80px"></div>
+</div>
+
+<div class="float">
+<a class="btn" style="margin:0" href="https://wa.me/201006882309">واتساب</a>
+<a class="btn btn-call" style="margin:0" href="tel:01006882309">اتصل 01006882309</a>
+</div>
+
+<script>
+let service = 'تركيب راوتر';
+function selectService(el, val){
+document.querySelectorAll('.opt').forEach(o=>o.classList.remove('active'));
+el.classList.add('active'); service = val;
+}
+function sendWhats(){
+let name=document.getElementById('name').value;
+let place=document.getElementById('place').value;
+let msg=document.getElementById('msg').value;
+let text = "السلام عليكم يا هندسة%0Aانا " + name + "%0Aالخدمة: " + service + "%0Aالعنوان: " + place + "%0Aالتفاصيل: " + msg;
+window.open("https://wa.me/201006882309?text="+text);
+}
+</script>
+</body>
+</html>
