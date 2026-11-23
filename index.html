@@ -1,249 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#071b33">
-  <meta name="description" content="المهندس أبو داود - برمجة وتركيب وصيانة الراوترات وكاميرات المراقبة في الجلاوية وساقلتة وسوهاج.">
-  <meta name="application-name" content="المهندس أبو داود">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07182b">
+  <meta name="description" content="المهندس أبو داود لخدمات برمجة وتركيب وصيانة الراوترات وكاميرات المراقبة في الجلاوية وساقلتة وسوهاج. اطلب معاينة أو استفسر عبر واتساب.">
+  <meta property="og:title" content="المهندس أبو داود | حلول الشبكات والأمان">
+  <meta property="og:description" content="خدمات الراوترات وكاميرات المراقبة في الجلاوية وساقلتة وسوهاج.">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index,follow">
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
-  <title>المهندس أبو داود | شبكات وكاميرات مراقبة</title>
+  <title>المهندس أبو داود | حلول الشبكات وكاميرات المراقبة</title>
   <style>
-    :root {
-      --navy:#071b33; --navy2:#0d2a4a; --blue:#087fca; --cyan:#20c5d8;
-      --gold:#ffc857; --ink:#15263a; --muted:#64748b; --bg:#f3f7fb;
-      --white:#fff; --green:#16a765; --line:#e5edf5; --shadow:0 16px 45px #09213a12;
-      --radius:22px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
-    a{color:inherit}
-    .container{width:min(1120px,calc(100% - 32px));margin-inline:auto}
-    .topbar{background:#041326;color:#d9e8f8;font-size:13px;padding:8px 0}
-    .topbar .container{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    header{position:sticky;top:0;z-index:20;background:#071b33ed;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff14}
-    .nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{display:flex;align-items:center;gap:12px;color:white;text-decoration:none;font-weight:900}
-    .brand-mark{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;color:white;font-size:22px}
-    .brand small{display:block;color:#9fb5ca;font-size:11px;font-weight:500}
-    .navlinks{display:flex;align-items:center;gap:24px}
-    .navlinks a{color:#d9e8f8;text-decoration:none;font-size:14px}
-    .navlinks a:hover{color:var(--gold)}
-    .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:14px;padding:12px 19px;text-decoration:none;font:700 15px Tahoma,Arial;cursor:pointer;transition:.2s}
-    .nav-cta,.btn-primary{background:var(--gold);color:#172338}
-    .btn:hover,.nav-cta:hover{transform:translateY(-2px);filter:brightness(1.03)}
-    .hero{position:relative;overflow:hidden;background:radial-gradient(circle at 15% 20%,#1b6595 0,transparent 34%),linear-gradient(120deg,#06172c,#0b3155 65%,#075d83);color:#fff;padding:78px 0 86px}
-    .hero:after{content:"";position:absolute;width:420px;height:420px;border:1px solid #ffffff18;border-radius:50%;left:-120px;bottom:-250px;box-shadow:0 0 0 35px #ffffff08,0 0 0 75px #ffffff06}
-    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:45px;position:relative;z-index:1}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:#b7f3f6;background:#ffffff12;border:1px solid #ffffff20;padding:7px 13px;border-radius:99px;font-size:13px}
-    h1{font-size:clamp(32px,5vw,55px);line-height:1.3;margin:18px 0 14px;letter-spacing:-1px}
-    .hero p{color:#d4e4f2;font-size:18px;max-width:620px;margin:0 0 26px}
-    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-    .btn-outline{border:1px solid #ffffff55;color:white;background:#ffffff0c}
-    .hero-points{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;color:#d4e4f2;font-size:13px}
-    .hero-points span:before{content:"✓";color:var(--gold);font-weight:bold;margin-left:7px}
-    .hero-visual{min-height:300px;display:grid;place-items:center;position:relative}
-    .signal-card{width:min(100%,360px);aspect-ratio:1/1;border-radius:35px;background:linear-gradient(145deg,#ffffff20,#ffffff08);border:1px solid #ffffff30;display:grid;place-items:center;box-shadow:0 30px 70px #0003;position:relative}
-    .signal-card:before,.signal-card:after{content:"";position:absolute;border:1px solid #69dce8a0;border-radius:50%;width:68%;height:68%}
-    .signal-card:after{width:86%;height:86%;border-color:#69dce850}
-    .signal-icon{font-size:104px;filter:drop-shadow(0 14px 20px #0005);z-index:1}
-    .floating-tag{position:absolute;background:#fff;color:var(--navy);padding:10px 14px;border-radius:13px;box-shadow:var(--shadow);font-weight:800;font-size:13px}
-    .tag-one{top:12%;right:-4%}.tag-two{bottom:12%;left:-4%}
-    .trust-wrap{margin-top:-28px;position:relative;z-index:2}
-    .trust{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 22px;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center}
-    .trust strong{display:block;color:var(--navy);font-size:15px}.trust span{font-size:12px;color:var(--muted)}
-    section{padding:76px 0}
-    .section-head{text-align:center;max-width:680px;margin:0 auto 34px}
-    .section-kicker{color:var(--blue);font-weight:800;font-size:13px}
-    h2{font-size:clamp(25px,3.4vw,36px);line-height:1.35;color:var(--navy);margin:7px 0 10px}
-    .section-head p{color:var(--muted);margin:0}
-    .services{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .service-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);transition:.2s}
-    .service-card:hover{transform:translateY(-4px);border-color:#b9e5f4}
-    .service-icon{width:54px;height:54px;border-radius:17px;background:#e5f7fb;display:grid;place-items:center;font-size:27px}
-    .service-card h3{color:var(--navy);margin:14px 0 7px;font-size:21px}
-    .service-card p{color:var(--muted);margin:0 0 13px}
-    .service-card ul{padding:0 19px 0 0;margin:0;color:#344b62}
-    .service-card li{padding:3px 0}
-    .how{background:#eaf3fa}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center}
-    .step-num{width:40px;height:40px;margin:0 auto 10px;border-radius:13px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:bold}
-    .step h3{margin:5px 0;color:var(--navy);font-size:17px}.step p{margin:0;color:var(--muted);font-size:14px}
-    .request-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px;align-items:start}
-    .request-info{background:linear-gradient(145deg,var(--navy),#0c4770);color:#fff;padding:28px;border-radius:var(--radius);position:sticky;top:96px}
-    .request-info h3{font-size:24px;margin:0 0 10px}.request-info p{color:#d2e5f4}
-    .info-line{display:flex;gap:12px;align-items:center;padding:12px 0;border-top:1px solid #ffffff20}
-    .info-line b{display:block}.info-line small{color:#c3d7e8}
-    .form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
-    .form-card h3{margin:0 0 5px;color:var(--navy);font-size:22px}
-    .form-card>p{color:var(--muted);margin:0 0 20px;font-size:14px}
-    .service-options{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0 18px}
-    .service-option{border:1px solid var(--line);background:#f8fbfe;color:#28445e;border-radius:13px;padding:12px 10px;text-align:center;font:700 14px Tahoma;cursor:pointer}
-    .service-option[aria-pressed="true"]{background:#e4f7fb;border:2px solid var(--blue);color:#075b91;padding:11px 9px}
-    label{display:block;font-size:13px;font-weight:700;color:#31465b;margin:12px 0 5px}
-    input,textarea,select{width:100%;border:1px solid #d9e3ec;border-radius:12px;padding:13px 14px;font:15px Tahoma,Arial;background:#fff;color:var(--ink);outline:none}
-    input:focus,textarea:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #087fca18}
-    textarea{min-height:110px;resize:vertical}
-    .form-note{font-size:12px;color:var(--muted);margin:10px 0 0}
-    .submit{width:100%;margin-top:16px;background:var(--green);color:#fff;padding:15px}
-    .faq-list{max-width:800px;margin:auto;display:grid;gap:10px}
-    details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 18px}
-    summary{font-weight:800;color:var(--navy);cursor:pointer}
-    details p{color:var(--muted);margin:9px 0 0}
-    footer{background:#041326;color:#d5e4f1;padding:34px 0 100px;text-align:center}
-    footer strong{font-size:20px;color:#fff}footer p{margin:5px 0;color:#a9bfd2;font-size:13px}
-    .mobile-bar{display:none}
-    @media(max-width:800px){
-      .navlinks{display:none}.hero{padding:58px 0 70px}.hero-grid{grid-template-columns:1fr;text-align:center;gap:28px}
-      .hero p{margin-inline:auto}.hero-actions,.hero-points{justify-content:center}.hero-visual{min-height:245px}
-      .signal-card{width:245px}.signal-icon{font-size:78px}.tag-one{right:-18px}.tag-two{left:-18px}
-      .request-grid{grid-template-columns:1fr}.request-info{position:static}.steps{grid-template-columns:1fr}
-    }
-    @media(max-width:560px){
-      .container{width:min(100% - 24px,1120px)}.topbar .container{justify-content:center}
-      .nav{height:64px}.brand-mark{width:39px;height:39px}.hero{padding:45px 0 58px}
-      .hero p{font-size:16px}.trust{grid-template-columns:1fr;padding:14px}.trust>div{padding:6px;border-bottom:1px solid var(--line)}.trust>div:last-child{border:0}
-      section{padding:55px 0}.services{grid-template-columns:1fr}.service-card,.form-card,.request-info{padding:21px}
-      .service-options{gap:8px}.service-option{font-size:12px;padding:11px 6px}
-      .mobile-bar{display:flex;position:fixed;z-index:30;bottom:10px;left:12px;right:12px;gap:9px;padding:7px;background:#071b33ed;border:1px solid #ffffff25;border-radius:17px;backdrop-filter:blur(12px);box-shadow:0 10px 30px #0003}
-      .mobile-bar a{flex:1;text-align:center;text-decoration:none;border-radius:12px;padding:10px 6px;font-weight:800;font-size:13px}
-      .mobile-wa{background:#19b86b;color:white}.mobile-call{background:#fff;color:var(--navy)}
-      footer{padding-bottom:105px}
-    }
+    :root{--navy:#07182b;--navy2:#0d2d4b;--blue:#087fca;--cyan:#2ac8d8;--gold:#f8c65a;--green:#16a765;--ink:#172b40;--muted:#66788a;--bg:#f4f7fb;--line:#e3eaf1;--white:#fff;--shadow:0 18px 48px #06182b12;--radius:22px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.8}a{color:inherit}button,input,textarea,select{font:inherit}.container{width:min(1160px,calc(100% - 34px));margin:auto}
+    .topline{background:#04101d;color:#c6d6e4;font-size:12px}.topline .container{display:flex;justify-content:space-between;gap:12px;padding:7px 0;flex-wrap:wrap}
+    header{position:sticky;top:0;z-index:100;background:#07182bf2;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff18}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff;font-weight:900}.brand-mark{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;font-size:23px;box-shadow:0 8px 22px #087fca44}.brand small{display:block;color:#a9bfd1;font-size:10px;font-weight:500}.navlinks{display:flex;gap:22px}.navlinks a{font-size:13px;color:#d8e5ef;text-decoration:none}.navlinks a:hover{color:var(--gold)}.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:13px;border:0;text-decoration:none;font-weight:800;cursor:pointer;transition:.2s}.nav-cta,.btn-gold{background:var(--gold);color:#17283b}.btn:hover,.nav-cta:hover{transform:translateY(-2px);filter:brightness(1.04)}
+    .hero{position:relative;overflow:hidden;padding:78px 0 95px;background:radial-gradient(ellipse at 15% 18%,#17638d 0,transparent 36%),linear-gradient(120deg,#061526,#0b2e4d 65%,#075976);color:#fff}.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(90deg,#000,transparent 80%)}.hero-grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:50px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid #ffffff2b;background:#ffffff12;border-radius:99px;color:#c0f4f5;font-size:12px}.live-dot{width:7px;height:7px;border-radius:50%;background:#43dfa0;box-shadow:0 0 0 5px #43dfa020}h1{font-size:clamp(36px,5.1vw,60px);line-height:1.25;letter-spacing:-1.2px;margin:19px 0 14px}.hero p{max-width:620px;color:#c9dce9;font-size:17px;margin:0 0 25px}.hero-actions{display:flex;gap:11px;flex-wrap:wrap}.btn-glass{color:#fff;border:1px solid #ffffff55;background:#ffffff0d}.hero-points{display:flex;gap:20px;flex-wrap:wrap;margin-top:25px;color:#d8e5ee;font-size:12px}.hero-points span:before{content:"✓";color:var(--gold);font-weight:900;margin-left:7px}
+    .hero-art{min-height:340px;display:grid;place-items:center;position:relative}.device-card{width:min(100%,370px);aspect-ratio:1/1;border-radius:34px;border:1px solid #ffffff30;background:linear-gradient(145deg,#ffffff20,#ffffff07);display:grid;place-items:center;position:relative;box-shadow:0 30px 80px #0004}.device-card:before,.device-card:after{content:"";position:absolute;width:68%;height:68%;border:1px solid #63d9e99c;border-radius:50%}.device-card:after{width:87%;height:87%;border-color:#63d9e94a}.device-icon{font-size:108px;z-index:1;filter:drop-shadow(0 15px 20px #0006)}.art-tag{position:absolute;background:#fff;color:var(--navy);padding:9px 13px;border-radius:12px;font-weight:900;font-size:12px;box-shadow:var(--shadow)}.art-tag.one{top:13%;right:-5%}.art-tag.two{bottom:13%;left:-5%}
+    .trust-strip{position:relative;margin-top:-31px;z-index:2}.trust-grid{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:17px;display:grid;grid-template-columns:repeat(4,1fr)}.trust-item{text-align:center;border-left:1px solid var(--line)}.trust-item:last-child{border:0}.trust-item b{display:block;color:var(--navy);font-size:13px}.trust-item span{font-size:11px;color:var(--muted)}
+    section{padding:76px 0}.section-head{text-align:center;max-width:700px;margin:0 auto 34px}.kicker{font-size:12px;font-weight:900;color:var(--blue)}.section-head h2{font-size:clamp(26px,3.4vw,37px);line-height:1.35;color:var(--navy);margin:7px 0}.section-head p{font-size:14px;color:var(--muted);margin:0}
+    .services{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.service-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:27px;box-shadow:var(--shadow);transition:.2s}.service-card:hover{transform:translateY(-4px);border-color:#b9dfed}.service-head{display:flex;align-items:center;gap:13px}.service-icon{width:55px;height:55px;border-radius:17px;background:#e6f7fa;display:grid;place-items:center;font-size:27px}.service-card h3{font-size:20px;color:var(--navy);margin:0}.service-card>p{color:var(--muted);font-size:13px;margin:14px 0}.service-card ul{padding:0;list-style:none;margin:0;display:grid;gap:7px;font-size:13px;color:#344a60}.service-card li:before{content:"✓";color:var(--green);font-weight:900;margin-left:9px}
+    .showcase{background:#eaf2f8}.showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.showcase-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}.showcase-visual{height:155px;display:grid;place-items:center;background:linear-gradient(135deg,#09223b,#12618a);position:relative;overflow:hidden}.showcase-visual:before{content:"";position:absolute;width:190px;height:190px;border:1px solid #ffffff25;border-radius:50%;box-shadow:0 0 0 25px #ffffff09,0 0 0 50px #ffffff06}.showcase-visual span{font-size:64px;z-index:1;filter:drop-shadow(0 10px 15px #0005)}.showcase-body{padding:17px}.showcase-body b{display:block;color:var(--navy);font-size:15px}.showcase-body p{margin:5px 0 0;color:var(--muted);font-size:12px}.showcase-note{text-align:center;color:var(--muted);font-size:11px;margin:15px 0 0}
+    .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.why-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:19px}.why-card .ico{font-size:25px}.why-card b{display:block;color:var(--navy);margin:6px 0}.why-card p{margin:0;color:var(--muted);font-size:12px}
+    .steps-section{background:#eaf2f8}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center}.step-number{width:40px;height:40px;margin:0 auto 9px;border-radius:13px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900}.step h3{font-size:16px;color:var(--navy);margin:4px 0}.step p{font-size:12px;color:var(--muted);margin:0}
+    .contact-section{background:linear-gradient(135deg,#07182b,#0d3c60);color:#fff}.contact-section .section-head h2{color:#fff}.contact-section .section-head p{color:#c4d7e5}.contact-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:22px;align-items:start}.contact-info{background:#ffffff0b;border:1px solid #ffffff24;border-radius:var(--radius);padding:26px}.contact-info h3{font-size:23px;margin:0 0 8px}.contact-info>p{color:#c5d7e5;font-size:13px;margin:0 0 18px}.contact-line{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid #ffffff20}.contact-symbol{width:38px;height:38px;border-radius:12px;background:#ffffff14;display:grid;place-items:center}.contact-line b{display:block;font-size:13px}.contact-line small{color:#c5d7e5;font-size:11px}
+    .form-card{background:#fff;color:var(--ink);border-radius:var(--radius);padding:27px;box-shadow:0 20px 60px #0002}.form-card h3{font-size:21px;color:var(--navy);margin:0}.form-card>p{font-size:12px;color:var(--muted);margin:3px 0 17px}.service-options{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:9px 0 17px}.service-option{padding:11px 8px;border:1px solid var(--line);border-radius:12px;background:#f8fafc;color:#334a60;font-size:12px;font-weight:900;cursor:pointer}.service-option[aria-pressed=true]{background:#e5f7fb;border:2px solid var(--blue);padding:10px 7px;color:#075b91}label{display:block;margin:11px 0 5px;color:#31475d;font-size:12px;font-weight:900}input,textarea,select{width:100%;padding:13px 14px;border:1px solid #d9e3ec;border-radius:11px;background:#fff;color:var(--ink);outline:none;font-size:14px}input:focus,textarea:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #087fca18}textarea{min-height:100px;resize:vertical}.submit{width:100%;margin-top:15px;background:var(--green);color:#fff;padding:14px}.form-hint{font-size:10px;color:var(--muted);margin:9px 0 0}
+    .faq-list{max-width:820px;margin:auto;display:grid;gap:10px}details{background:#fff;border:1px solid var(--line);border-radius:13px;padding:15px 18px}summary{font-size:13px;font-weight:900;color:var(--navy);cursor:pointer}details p{font-size:12px;color:var(--muted);margin:8px 0 0}
+    .final-cta{padding:0 0 75px}.cta-box{background:linear-gradient(110deg,#0b3151,#087fca);border-radius:24px;padding:30px 34px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:var(--shadow)}.cta-box h2{margin:0;font-size:24px}.cta-box p{margin:4px 0 0;color:#d7e8f4;font-size:12px}
+    footer{background:#04101d;color:#c4d3df;text-align:center;padding:32px 0 90px}footer strong{font-size:19px;color:#fff}footer p{font-size:11px;margin:5px 0;color:#9eb2c3}.footer-links{display:flex;justify-content:center;gap:17px;margin:12px 0}.footer-links a{font-size:11px;color:#d7e5ef;text-decoration:none}.mobile-bar{display:none}.back-top{position:fixed;left:18px;bottom:25px;width:42px;height:42px;border:0;border-radius:14px;background:#fff;color:var(--navy);box-shadow:var(--shadow);cursor:pointer;opacity:0;pointer-events:none;transition:.2s;z-index:40}.back-top.visible{opacity:1;pointer-events:auto}.toast{position:fixed;top:92px;left:50%;transform:translate(-50%,-15px);background:#102d49;color:#fff;padding:10px 16px;border-radius:12px;font-size:12px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s;z-index:150}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:850px){.navlinks{display:none}.hero-grid{grid-template-columns:1fr;text-align:center;gap:22px}.hero p{margin-inline:auto}.hero-actions,.hero-points{justify-content:center}.hero-art{min-height:270px}.device-card{width:270px}.device-icon{font-size:83px}.why-grid{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr}}
+    @media(max-width:600px){.container{width:calc(100% - 26px)}.topline .container{justify-content:center}.nav{height:65px}.nav-cta{font-size:11px;padding:10px}.hero{padding:49px 0 65px}.hero p{font-size:14px}.hero-points{gap:8px 14px}.trust-grid{grid-template-columns:repeat(2,1fr);padding:10px}.trust-item{padding:8px;border-left:0;border-bottom:1px solid var(--line)}.trust-item:nth-child(odd){border-left:1px solid var(--line)}.trust-item:nth-child(n+3){border-bottom:0}.trust-item b{font-size:12px}section{padding:55px 0}.services,.showcase-grid,.steps{grid-template-columns:1fr}.service-card,.form-card,.contact-info{padding:20px}.showcase-visual{height:135px}.why-grid{gap:9px}.why-card{padding:14px 12px}.why-card p{font-size:11px}.cta-box{padding:23px;display:block;text-align:center}.cta-box .btn{margin-top:15px}.mobile-bar{display:flex;position:fixed;z-index:120;bottom:10px;left:12px;right:12px;gap:8px;padding:7px;border:1px solid #ffffff22;border-radius:16px;background:#07182bf2;backdrop-filter:blur(12px);box-shadow:0 10px 30px #0004}.mobile-bar a{flex:1;text-align:center;padding:10px 5px;border-radius:11px;text-decoration:none;font-size:12px;font-weight:900}.mobile-wa{background:#16a765;color:#fff}.mobile-call{background:#fff;color:var(--navy)}.back-top{bottom:83px;left:16px}footer{padding-bottom:95px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
   </style>
 </head>
 <body>
-  <div class="topbar"><div class="container"><span>📍 الجلاوية – ساقلتة – سوهاج</span><span>خدمات راوترات وشبكات وكاميرات مراقبة</span></div></div>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#home" aria-label="العودة إلى الرئيسية"><span class="brand-mark">📡</span><span>المهندس أبو داود<small>شبكات • راوترات • كاميرات</small></span></a>
-      <nav class="navlinks" aria-label="القائمة الرئيسية"><a href="#services">الخدمات</a><a href="#how">طريقة الطلب</a><a href="#request">اطلب خدمة</a></nav>
-      <a class="nav-cta" href="#request">اطلب خدمتك الآن ←</a>
-    </div>
-  </header>
+  <div class="topline"><div class="container"><span>📍 الجلاوية – ساقلتة – سوهاج</span><span>حلول الشبكات والإنترنت وأنظمة المراقبة</span></div></div>
+  <header><div class="container nav">
+    <a class="brand" href="#home"><span class="brand-mark">📡</span><span>المهندس أبو داود<small>حلول الشبكات وأنظمة المراقبة</small></span></a>
+    <nav class="navlinks" aria-label="القائمة الرئيسية"><a href="#services">الخدمات</a><a href="#showcase">مجالات العمل</a><a href="#why">مميزاتنا</a><a href="#faq">الأسئلة الشائعة</a></nav>
+    <a class="nav-cta" href="#contact">اطلب خدمة الآن ←</a>
+  </div></header>
 
   <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">⚡ خدمة فنية داخل الجلاوية وساقلتة وسوهاج</span>
-          <h1>إنترنت أقوى…<br>وأمان يطمنّك</h1>
-          <p>برمجة وتركيب وصيانة الراوترات، وتجهيز كاميرات المراقبة وربطها بالموبايل. ابعت طلبك وهننسّق معاك التفاصيل.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#request">اطلب خدمة الآن</a>
-            <a class="btn btn-outline" href="https://wa.me/201006882309" target="_blank" rel="noopener">تواصل واتساب</a>
+    <section class="hero" id="home"><div class="container hero-grid">
+      <div>
+        <span class="eyebrow"><i class="live-dot"></i> خدمة فنية في الجلاوية وساقلتة وسوهاج</span>
+        <h1>اتصال أقوى.<br>وحماية تطمّنك.</h1>
+        <p>برمجة وتركيب وصيانة الراوترات، وتجهيز كاميرات المراقبة وربطها بالموبايل. حلول عملية للبيت والمحل والمزرعة، مع تواصل مباشر لتحديد احتياجك.</p>
+        <div class="hero-actions"><a class="btn btn-gold" href="#contact">اطلب خدمتك الآن ←</a><a class="btn btn-glass" href="https://wa.me/201006882309" target="_blank" rel="noopener noreferrer">تواصل عبر واتساب</a></div>
+        <div class="hero-points"><span>معاينة وتركيب لحد البيت</span><span>ضمان على الشغل حسب الاتفاق</span><span>أسعار مناسبة</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="device-card"><div class="device-icon">📶</div><span class="art-tag one">شبكة مستقرة</span><span class="art-tag two">📹 متابعة من موبايلك</span></div></div>
+    </div></section>
+
+    <div class="container trust-strip"><div class="trust-grid">
+      <div class="trust-item"><b>📍 خدمة محلية</b><span>الجلاوية وساقلتة وسوهاج</span></div>
+      <div class="trust-item"><b>🛠️ تركيب وصيانة</b><span>للبيوت والمحلات والمزارع</span></div>
+      <div class="trust-item"><b>💬 تواصل مباشر</b><span>طلبك في رسالة واتساب</span></div>
+      <div class="trust-item"><b>🤝 اتفاق واضح</b><span>تفاصيل قبل التنفيذ</span></div>
+    </div></div>
+
+    <section id="services"><div class="container">
+      <div class="section-head"><span class="kicker">خدماتنا</span><h2>حلول متكاملة للإنترنت والمراقبة</h2><p>اختار الخدمة المناسبة ليك، أو ابعت تفاصيل المشكلة علشان نحدد المطلوب.</p></div>
+      <div class="services">
+        <article class="service-card"><div class="service-head"><div class="service-icon">📶</div><h3>الراوترات والإنترنت</h3></div><p>ضبط وتجهيز الشبكة لتحسين الاتصال والتغطية داخل المكان.</p><ul><li>برمجة راوترات WE وفودافون واتصالات وأورنج</li><li>ضبط الواي فاي وتغيير الاسم وكلمة المرور</li><li>حل مشاكل الفصل والبطء وضعف الإشارة</li><li>تركيب Access Point وتوسيع التغطية</li><li>تأمين إعدادات الشبكة والراوتر</li></ul></article>
+        <article class="service-card"><div class="service-head"><div class="service-icon">📹</div><h3>كاميرات المراقبة</h3></div><p>تركيب وتجهيز أنظمة مراقبة تناسب احتياج المكان.</p><ul><li>تركيب كاميرات للبيت والمحل والمزرعة والمخزن</li><li>تجهيز DVR وربط الكاميرات بالموبايل</li><li>تركيب أو تغيير الهارد وصيانة النظام</li><li>ضبط الرؤية الليلية وجودة الصورة</li><li>تمديد وتنظيم الأسلاك بشكل مرتب</li></ul></article>
+      </div>
+    </div></section>
+
+    <section class="showcase" id="showcase"><div class="container">
+      <div class="section-head"><span class="kicker">مجالات العمل</span><h2>حلول تناسب كل مكان</h2><p>خدمات وتجهيزات حسب طبيعة المكان واحتياجه.</p></div>
+      <div class="showcase-grid">
+        <article class="showcase-card"><div class="showcase-visual"><span>🏠</span></div><div class="showcase-body"><b>البيوت والشقق</b><p>تحسين تغطية الواي فاي ومتابعة المكان بالكاميرات.</p></div></article>
+        <article class="showcase-card"><div class="showcase-visual"><span>🏪</span></div><div class="showcase-body"><b>المحلات التجارية</b><p>تجهيز اتصال الإنترنت ونظام مراقبة مناسب للمحل.</p></div></article>
+        <article class="showcase-card"><div class="showcase-visual"><span>🌾</span></div><div class="showcase-body"><b>المزارع والمخازن</b><p>حلول مراقبة وتغطية حسب مساحة وطبيعة الموقع.</p></div></article>
+      </div>
+      <p class="showcase-note">الصور الرمزية توضيحية لمجالات الخدمة وليست صورًا لمشروعات منفذة.</p>
+    </div></section>
+
+    <section id="why"><div class="container">
+      <div class="section-head"><span class="kicker">ليه تتواصل معانا؟</span><h2>خدمة واضحة من أول مكالمة</h2><p>نهتم بفهم المشكلة وتحديد المطلوب قبل المعاينة أو التنفيذ.</p></div>
+      <div class="why-grid">
+        <div class="why-card"><span class="ico">📍</span><b>قريب من منطقتك</b><p>خدمة موجهة للجلاوية وساقلتة وسوهاج.</p></div>
+        <div class="why-card"><span class="ico">🧰</span><b>خدمات متنوعة</b><p>راوترات وشبكات وكاميرات وصيانة.</p></div>
+        <div class="why-card"><span class="ico">🤝</span><b>اتفاق واضح</b><p>تفاصيل الخدمة والتكلفة تتحدد بالتواصل.</p></div>
+        <div class="why-card"><span class="ico">💬</span><b>طلب سهل</b><p>ابعت بياناتك وتفاصيل المشكلة على واتساب.</p></div>
+      </div>
+    </div></section>
+
+    <section class="steps-section" id="steps"><div class="container">
+      <div class="section-head"><span class="kicker">خطوات بسيطة</span><h2>اطلب الخدمة في 3 خطوات</h2><p>من غير تعقيد؛ ابعت البيانات وهنكمل معاك على واتساب.</p></div>
+      <div class="steps">
+        <div class="step"><div class="step-number">1</div><h3>حدد الخدمة</h3><p>اختار راوتر أو كاميرات أو خدمة أخرى.</p></div>
+        <div class="step"><div class="step-number">2</div><h3>اكتب بياناتك</h3><p>الاسم والمنطقة ورقم التواصل وتفاصيل الطلب.</p></div>
+        <div class="step"><div class="step-number">3</div><h3>ابعت واتساب</h3><p>راجع الرسالة واضغط إرسال للتواصل.</p></div>
+      </div>
+    </div></section>
+
+    <section class="contact-section" id="contact"><div class="container">
+      <div class="section-head"><span class="kicker" style="color:#75dfe7">تواصل معنا</span><h2>احكيلنا محتاج إيه</h2><p>املأ البيانات، وهيفتح واتساب برسالة جاهزة تقدر تراجعها وتبعتها.</p></div>
+      <div class="contact-grid">
+        <aside class="contact-info"><h3>المهندس أبو داود</h3><p>برمجة وتركيب وصيانة الراوترات وكاميرات المراقبة.</p>
+          <div class="contact-line"><span class="contact-symbol">📍</span><div><b>مناطق الخدمة</b><small>الجلاوية – ساقلتة – سوهاج</small></div></div>
+          <div class="contact-line"><span class="contact-symbol">📞</span><div><b>اتصال مباشر</b><small dir="ltr">01006882309</small></div></div>
+          <div class="contact-line"><span class="contact-symbol">💬</span><div><b>واتساب</b><small>إرسال تفاصيل الطلب مباشرة</small></div></div>
+          <div class="contact-line"><span class="contact-symbol">🕒</span><div><b>مواعيد التواصل</b><small>تواصل للاستفسار وتحديد موعد مناسب</small></div></div>
+        </aside>
+        <form class="form-card" id="requestForm">
+          <h3>نموذج طلب خدمة</h3><p>الحقول اللي عليها نجمة مطلوبة.</p>
+          <label>نوع الخدمة *</label>
+          <div class="service-options" role="group" aria-label="اختيار الخدمة">
+            <button class="service-option" type="button" data-service="تركيب راوتر" aria-pressed="true">📶 تركيب راوتر</button>
+            <button class="service-option" type="button" data-service="برمجة راوتر" aria-pressed="false">⚙️ برمجة راوتر</button>
+            <button class="service-option" type="button" data-service="تركيب كاميرات" aria-pressed="false">📹 تركيب كاميرات</button>
+            <button class="service-option" type="button" data-service="صيانة كاميرات" aria-pressed="false">🔧 صيانة كاميرات</button>
+            <button class="service-option" type="button" data-service="خدمة أخرى" aria-pressed="false">📝 خدمة أخرى</button>
           </div>
-          <div class="hero-points"><span>معاينة وتركيب لحد البيت</span><span>ضمان على الشغل حسب الاتفاق</span><span>أسعار مناسبة</span></div>
-        </div>
-        <div class="hero-visual" aria-hidden="true">
-          <div class="signal-card"><div class="signal-icon">📶</div><span class="floating-tag tag-one">شبكة مستقرة</span><span class="floating-tag tag-two">📹 مراقبة على موبايلك</span></div>
-        </div>
+          <label for="customerName">الاسم *</label><input id="customerName" name="name" autocomplete="name" maxlength="70" placeholder="اكتب اسمك" required>
+          <label for="customerPlace">المنطقة / العنوان *</label><input id="customerPlace" name="place" autocomplete="street-address" maxlength="120" placeholder="مثال: الجلاوية – ساقلتة" required>
+          <label for="customerPhone">رقم موبايلك (اختياري)</label><input id="customerPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="رقم للتواصل معاك">
+          <label for="customerMessage">تفاصيل إضافية</label><textarea id="customerMessage" name="message" maxlength="1000" placeholder="اكتب المشكلة أو تفاصيل الخدمة المطلوبة..."></textarea>
+          <button class="btn submit" type="submit">إرسال الطلب على واتساب　💬</button>
+          <p class="form-hint">بياناتك لا تُرسل تلقائيًا إلى الموقع؛ يتم وضعها في رسالة واتساب تراجعها قبل الإرسال.</p>
+        </form>
       </div>
-    </section>
+    </div></section>
 
-    <div class="container trust-wrap">
-      <div class="trust">
-        <div><strong>📍 خدمة محلية</strong><span>الجلاوية وساقلتة وسوهاج</span></div>
-        <div><strong>🛠️ تركيب وصيانة</strong><span>للبيوت والمحلات والمزارع</span></div>
-        <div><strong>💬 تواصل مباشر</strong><span>طلبك بيوصل واتساب</span></div>
+    <section id="faq"><div class="container">
+      <div class="section-head"><span class="kicker">معلومات مهمة</span><h2>الأسئلة الشائعة</h2><p>إجابات سريعة على بعض الاستفسارات.</p></div>
+      <div class="faq-list">
+        <details><summary>هل الخدمة متاحة في البيت؟</summary><p>متاح المعاينة والتركيب حسب المنطقة والاتفاق. اكتب عنوانك في نموذج الطلب لتأكيد إمكانية الخدمة.</p></details>
+        <details><summary>هل أقدر أشوف الكاميرات من الموبايل؟</summary><p>يمكن ربط نظام المراقبة بالموبايل إذا كان الجهاز والإنترنت والإعدادات تدعم ذلك.</p></details>
+        <details><summary>هل بتتعاملوا مع كل أنواع الراوترات؟</summary><p>ابعت نوع الراوتر أو صورته ووصف المشكلة على واتساب علشان نحدد إمكانية حلها.</p></details>
+        <details><summary>إزاي أعرف تكلفة الخدمة؟</summary><p>ابعت نوع الخدمة والعنوان والتفاصيل، ويتم توضيح التكلفة والاتفاق قبل التنفيذ.</p></details>
       </div>
-    </div>
+    </div></section>
 
-    <section id="services">
-      <div class="container">
-        <div class="section-head"><span class="section-kicker">خدماتنا</span><h2>كل اللي تحتاجه لشبكتك وتأمين مكانك</h2><p>اختار الخدمة المناسبة، ولو عندك مشكلة مختلفة اكتبها في نموذج الطلب.</p></div>
-        <div class="services">
-          <article class="service-card"><div class="service-icon">📶</div><h3>الراوترات والإنترنت</h3><p>تجهيز الشبكة وضبط إعدادات الراوتر لتحصل على أفضل أداء ممكن.</p><ul><li>برمجة راوترات WE وفودافون واتصالات وأورنج</li><li>ضبط الواي فاي وتغيير الاسم وكلمة السر</li><li>حل مشاكل الفصل والبطء وضعف التغطية</li><li>تركيب Access Point وتوسيع التغطية</li><li>تأمين إعدادات الشبكة والراوتر</li></ul></article>
-          <article class="service-card"><div class="service-icon">📹</div><h3>كاميرات المراقبة</h3><p>تركيب وتجهيز أنظمة مراقبة تناسب البيت أو المحل أو المزرعة.</p><ul><li>تركيب كاميرات داخلية وخارجية</li><li>تجهيز DVR وربط الكاميرات بالموبايل</li><li>تركيب أو تغيير الهارد وصيانة النظام</li><li>ضبط الرؤية الليلية وجودة الصورة</li><li>تمديد وتنظيم الأسلاك بشكل مرتب</li></ul></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="how" id="how">
-      <div class="container">
-        <div class="section-head"><span class="section-kicker">بكل سهولة</span><h2>اطلب الخدمة في 3 خطوات</h2><p>من غير تعقيد؛ ابعت البيانات وهنكمل معاك على واتساب.</p></div>
-        <div class="steps">
-          <div class="step"><div class="step-num">1</div><h3>اختار الخدمة</h3><p>حدد راوتر أو كاميرات أو اكتب طلبك بالتفصيل.</p></div>
-          <div class="step"><div class="step-num">2</div><h3>اكتب بياناتك</h3><p>اسمك والمنطقة ووصف مختصر للمشكلة.</p></div>
-          <div class="step"><div class="step-num">3</div><h3>ابعت على واتساب</h3><p>الطلب هيتجهز في رسالة واضحة للتواصل.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="request">
-      <div class="container">
-        <div class="section-head"><span class="section-kicker">تواصل معنا</span><h2>اطلب خدمتك دلوقتي</h2><p>املأ البيانات التالية، وهيتم فتح واتساب برسالة جاهزة للإرسال.</p></div>
-        <div class="request-grid">
-          <aside class="request-info">
-            <h3>المهندس أبو داود</h3><p>جاهز لمساعدتك في مشاكل الإنترنت وتركيب وصيانة كاميرات المراقبة.</p>
-            <div class="info-line"><span>📍</span><div><b>نطاق الخدمة</b><small>الجلاوية – ساقلتة – سوهاج</small></div></div>
-            <div class="info-line"><span>📞</span><div><b>اتصال مباشر</b><small dir="ltr">01006882309</small></div></div>
-            <div class="info-line"><span>💬</span><div><b>واتساب</b><small>إرسال الطلب مباشرة</small></div></div>
-          </aside>
-          <form class="form-card" id="requestForm">
-            <h3>بيانات طلبك</h3><p>اختار نوع الخدمة واكتب بيانات التواصل.</p>
-            <label>نوع الخدمة</label>
-            <div class="service-options" role="group" aria-label="اختيار نوع الخدمة">
-              <button type="button" class="service-option" data-service="تركيب راوتر" aria-pressed="true">📶 تركيب راوتر</button>
-              <button type="button" class="service-option" data-service="برمجة راوتر" aria-pressed="false">⚙️ برمجة راوتر</button>
-              <button type="button" class="service-option" data-service="تركيب كاميرات" aria-pressed="false">📹 تركيب كاميرات</button>
-              <button type="button" class="service-option" data-service="صيانة كاميرات" aria-pressed="false">🔧 صيانة كاميرات</button>
-              <button type="button" class="service-option" data-service="خدمة أخرى" aria-pressed="false">📝 خدمة أخرى</button>
-            </div>
-            <label for="customerName">الاسم</label><input id="customerName" name="name" autocomplete="name" placeholder="اكتب اسمك" required maxlength="70">
-            <label for="customerPlace">المنطقة / العنوان</label><input id="customerPlace" name="place" autocomplete="street-address" placeholder="مثال: الجلاوية – ساقلتة" required maxlength="120">
-            <label for="customerPhone">رقم موبايلك (اختياري)</label><input id="customerPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="رقم للتواصل معاك" maxlength="20">
-            <label for="customerMsg">تفاصيل الطلب</label><textarea id="customerMsg" name="message" placeholder="اشرح المشكلة أو اكتب تفاصيل الخدمة المطلوبة..." maxlength="1000"></textarea>
-            <button class="btn submit" type="submit">إرسال الطلب على واتساب　💬</button>
-            <p class="form-note">بالضغط على الزر هيفتح واتساب برسالة جاهزة، راجعها واضغط إرسال.</p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <section style="padding-top:10px">
-      <div class="container">
-        <div class="section-head"><span class="section-kicker">أسئلة شائعة</span><h2>قبل ما تطلب</h2></div>
-        <div class="faq-list">
-          <details><summary>هل بتقدموا خدمة في البيت؟</summary><p>متاح المعاينة والتركيب حسب المنطقة والاتفاق، اكتب عنوانك في الطلب لتأكيد إمكانية الخدمة.</p></details>
-          <details><summary>هل ممكن أشوف كاميرات المراقبة من الموبايل؟</summary><p>نعم، يمكن تجهيز النظام وربطه بالموبايل إذا كان الجهاز والإنترنت والإعدادات تدعم ذلك.</p></details>
-          <details><summary>هل بتصلحوا كل أنواع الراوترات؟</summary><p>ابعت نوع الراوتر أو صورته ووصف المشكلة على واتساب علشان نحدد إمكانية حلها.</p></details>
-        </div>
-      </div>
-    </section>
+    <section class="final-cta"><div class="container"><div class="cta-box"><div><h2>عندك مشكلة في الإنترنت أو محتاج كاميرات؟</h2><p>ابعت استفسارك دلوقتي وخلي تفاصيل طلبك واضحة.</p></div><a class="btn btn-gold" href="#contact">ابدأ طلبك الآن ←</a></div></div></section>
   </main>
 
-  <footer><div class="container"><strong>المهندس أبو داود</strong><p>برمجة وتركيب الراوترات • كاميرات المراقبة</p><p>الجلاوية – ساقلتة – سوهاج</p><p>© <span id="year"></span> جميع الحقوق محفوظة</p></div></footer>
-  <div class="mobile-bar"><a class="mobile-wa" href="https://wa.me/201006882309" target="_blank" rel="noopener">واتساب 💬</a><a class="mobile-call" href="tel:+201006882309">اتصل الآن 📞</a></div>
+  <footer><div class="container"><strong>المهندس أبو داود</strong><p>حلول الشبكات والراوترات • كاميرات المراقبة</p><p>الجلاوية – ساقلتة – سوهاج</p><div class="footer-links"><a href="#services">الخدمات</a><a href="#contact">اطلب خدمة</a><a href="https://wa.me/201006882309" target="_blank" rel="noopener noreferrer">واتساب</a><a href="tel:+201006882309">اتصال</a></div><p>© <span id="year"></span> جميع الحقوق محفوظة</p></div></footer>
+  <div class="mobile-bar"><a class="mobile-wa" href="https://wa.me/201006882309" target="_blank" rel="noopener noreferrer">واتساب 💬</a><a class="mobile-call" href="tel:+201006882309">اتصل الآن 📞</a></div>
+  <button class="back-top" id="backTop" aria-label="العودة لأعلى الصفحة">↑</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
     (() => {
       const whatsappNumber = "201006882309";
       let selectedService = "تركيب راوتر";
       const options = document.querySelectorAll(".service-option");
-      options.forEach((button) => {
-        button.addEventListener("click", () => {
-          selectedService = button.dataset.service;
-          options.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
-        });
-      });
-
-      document.getElementById("requestForm").addEventListener("submit", (event) => {
+      const toast = document.getElementById("toast");
+      let toastTimer;
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
+      }
+      options.forEach(button => button.addEventListener("click", () => {
+        selectedService = button.dataset.service;
+        options.forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+      }));
+      document.getElementById("requestForm").addEventListener("submit", event => {
         event.preventDefault();
         const name = document.getElementById("customerName").value.trim();
         const place = document.getElementById("customerPlace").value.trim();
         const phone = document.getElementById("customerPhone").value.trim();
-        const message = document.getElementById("customerMsg").value.trim();
-
-        if (!name || !place) {
-          alert("من فضلك اكتب الاسم والعنوان.");
-          return;
-        }
-
+        const message = document.getElementById("customerMessage").value.trim();
+        if (!name || !place) { showToast("من فضلك اكتب الاسم والعنوان أولًا."); return; }
         const lines = [
           "السلام عليكم يا هندسة أبو داود 🌹",
           "عايز أطلب خدمة من الموقع:",
@@ -254,17 +180,15 @@
           message ? "التفاصيل: " + message : ""
         ].filter(Boolean);
         const url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(lines.join("\n"));
-        window.open(url, "_blank", "noopener,noreferrer");
+        const opened = window.open(url, "_blank", "noopener,noreferrer");
+        if (!opened) window.location.href = url;
       });
-
       document.getElementById("year").textContent = new Date().getFullYear();
-
+      const backTop = document.getElementById("backTop");
+      window.addEventListener("scroll", () => backTop.classList.toggle("visible", window.scrollY > 500), {passive:true});
+      backTop.addEventListener("click", () => window.scrollTo({top:0,behavior:"smooth"}));
       if ("serviceWorker" in navigator && location.protocol !== "file:") {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("./sw.js").catch((error) => {
-            console.warn("تعذر تسجيل Service Worker:", error);
-          });
-        });
+        window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
       }
     })();
   </script>
