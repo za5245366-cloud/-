@@ -1,95 +1,272 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>المهندس أبو داود | رواتر وكاميرات</title>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0ea5e9">
-<style>
-*{box-sizing:border-box}body{font-family:Arial;margin:0;background:#f1f5f9;color:#111}
-.top{background:linear-gradient(135deg,#0284c7,#0ea5e9);color:#fff;padding:35px 15px;text-align:center;border-radius:0 0 30px 30px}
-.top h1{margin:0;font-size:38px}.top p{font-size:18px}
-.top span{background:#facc15;color:#000;padding:7px 18px;border-radius:20px;display:inline-block;margin-top:10px;font-weight:bold}
-.wrap{max-width:650px;margin:auto;padding:15px}
-.card{background:#fff;padding:20px;border-radius:20px;margin:15px 0;box-shadow:0 4px 15px #0001}
-.card h2{margin:0 0 10px;color:#0284c7}
-.card p{line-height:1.9;font-size:17px;margin:6px 0}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.opt{background:#e0f2fe;padding:15px;border-radius:15px;cursor:pointer;text-align:center;font-weight:bold;border:2px solid transparent}
-.opt.active{border-color:#0284c7;background:#bae6fd}
-input,select,textarea{width:100%;padding:13px;margin:8px 0;border-radius:12px;border:1px solid #ddd;font-size:16px;font-family:Arial}
-.btn{display:block;text-align:center;background:#25D366;color:#fff;padding:16px;border-radius:14px;text-decoration:none;font-size:20px;font-weight:bold;margin:10px 0;border:none;cursor:pointer;width:100%}
-.btn-call{background:#111}
-.float{position:fixed;bottom:15px;left:15px;right:15px;display:flex;gap:10px;max-width:650px;margin:auto}
-.float a{flex:1}
-.badge2{background:#ecfdf5;color:#065f46;padding:10px;border-radius:12px;text-align:center;font-weight:bold}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b33">
+  <meta name="description" content="المهندس أبو داود - برمجة وتركيب وصيانة الراوترات وكاميرات المراقبة في الجلاوية وساقلتة وسوهاج.">
+  <meta name="application-name" content="المهندس أبو داود">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <title>المهندس أبو داود | شبكات وكاميرات مراقبة</title>
+  <style>
+    :root {
+      --navy:#071b33; --navy2:#0d2a4a; --blue:#087fca; --cyan:#20c5d8;
+      --gold:#ffc857; --ink:#15263a; --muted:#64748b; --bg:#f3f7fb;
+      --white:#fff; --green:#16a765; --line:#e5edf5; --shadow:0 16px 45px #09213a12;
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+    a{color:inherit}
+    .container{width:min(1120px,calc(100% - 32px));margin-inline:auto}
+    .topbar{background:#041326;color:#d9e8f8;font-size:13px;padding:8px 0}
+    .topbar .container{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    header{position:sticky;top:0;z-index:20;background:#071b33ed;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff14}
+    .nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;color:white;text-decoration:none;font-weight:900}
+    .brand-mark{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;color:white;font-size:22px}
+    .brand small{display:block;color:#9fb5ca;font-size:11px;font-weight:500}
+    .navlinks{display:flex;align-items:center;gap:24px}
+    .navlinks a{color:#d9e8f8;text-decoration:none;font-size:14px}
+    .navlinks a:hover{color:var(--gold)}
+    .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:14px;padding:12px 19px;text-decoration:none;font:700 15px Tahoma,Arial;cursor:pointer;transition:.2s}
+    .nav-cta,.btn-primary{background:var(--gold);color:#172338}
+    .btn:hover,.nav-cta:hover{transform:translateY(-2px);filter:brightness(1.03)}
+    .hero{position:relative;overflow:hidden;background:radial-gradient(circle at 15% 20%,#1b6595 0,transparent 34%),linear-gradient(120deg,#06172c,#0b3155 65%,#075d83);color:#fff;padding:78px 0 86px}
+    .hero:after{content:"";position:absolute;width:420px;height:420px;border:1px solid #ffffff18;border-radius:50%;left:-120px;bottom:-250px;box-shadow:0 0 0 35px #ffffff08,0 0 0 75px #ffffff06}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:45px;position:relative;z-index:1}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:#b7f3f6;background:#ffffff12;border:1px solid #ffffff20;padding:7px 13px;border-radius:99px;font-size:13px}
+    h1{font-size:clamp(32px,5vw,55px);line-height:1.3;margin:18px 0 14px;letter-spacing:-1px}
+    .hero p{color:#d4e4f2;font-size:18px;max-width:620px;margin:0 0 26px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn-outline{border:1px solid #ffffff55;color:white;background:#ffffff0c}
+    .hero-points{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;color:#d4e4f2;font-size:13px}
+    .hero-points span:before{content:"✓";color:var(--gold);font-weight:bold;margin-left:7px}
+    .hero-visual{min-height:300px;display:grid;place-items:center;position:relative}
+    .signal-card{width:min(100%,360px);aspect-ratio:1/1;border-radius:35px;background:linear-gradient(145deg,#ffffff20,#ffffff08);border:1px solid #ffffff30;display:grid;place-items:center;box-shadow:0 30px 70px #0003;position:relative}
+    .signal-card:before,.signal-card:after{content:"";position:absolute;border:1px solid #69dce8a0;border-radius:50%;width:68%;height:68%}
+    .signal-card:after{width:86%;height:86%;border-color:#69dce850}
+    .signal-icon{font-size:104px;filter:drop-shadow(0 14px 20px #0005);z-index:1}
+    .floating-tag{position:absolute;background:#fff;color:var(--navy);padding:10px 14px;border-radius:13px;box-shadow:var(--shadow);font-weight:800;font-size:13px}
+    .tag-one{top:12%;right:-4%}.tag-two{bottom:12%;left:-4%}
+    .trust-wrap{margin-top:-28px;position:relative;z-index:2}
+    .trust{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 22px;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center}
+    .trust strong{display:block;color:var(--navy);font-size:15px}.trust span{font-size:12px;color:var(--muted)}
+    section{padding:76px 0}
+    .section-head{text-align:center;max-width:680px;margin:0 auto 34px}
+    .section-kicker{color:var(--blue);font-weight:800;font-size:13px}
+    h2{font-size:clamp(25px,3.4vw,36px);line-height:1.35;color:var(--navy);margin:7px 0 10px}
+    .section-head p{color:var(--muted);margin:0}
+    .services{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .service-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);transition:.2s}
+    .service-card:hover{transform:translateY(-4px);border-color:#b9e5f4}
+    .service-icon{width:54px;height:54px;border-radius:17px;background:#e5f7fb;display:grid;place-items:center;font-size:27px}
+    .service-card h3{color:var(--navy);margin:14px 0 7px;font-size:21px}
+    .service-card p{color:var(--muted);margin:0 0 13px}
+    .service-card ul{padding:0 19px 0 0;margin:0;color:#344b62}
+    .service-card li{padding:3px 0}
+    .how{background:#eaf3fa}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center}
+    .step-num{width:40px;height:40px;margin:0 auto 10px;border-radius:13px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:bold}
+    .step h3{margin:5px 0;color:var(--navy);font-size:17px}.step p{margin:0;color:var(--muted);font-size:14px}
+    .request-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px;align-items:start}
+    .request-info{background:linear-gradient(145deg,var(--navy),#0c4770);color:#fff;padding:28px;border-radius:var(--radius);position:sticky;top:96px}
+    .request-info h3{font-size:24px;margin:0 0 10px}.request-info p{color:#d2e5f4}
+    .info-line{display:flex;gap:12px;align-items:center;padding:12px 0;border-top:1px solid #ffffff20}
+    .info-line b{display:block}.info-line small{color:#c3d7e8}
+    .form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+    .form-card h3{margin:0 0 5px;color:var(--navy);font-size:22px}
+    .form-card>p{color:var(--muted);margin:0 0 20px;font-size:14px}
+    .service-options{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0 18px}
+    .service-option{border:1px solid var(--line);background:#f8fbfe;color:#28445e;border-radius:13px;padding:12px 10px;text-align:center;font:700 14px Tahoma;cursor:pointer}
+    .service-option[aria-pressed="true"]{background:#e4f7fb;border:2px solid var(--blue);color:#075b91;padding:11px 9px}
+    label{display:block;font-size:13px;font-weight:700;color:#31465b;margin:12px 0 5px}
+    input,textarea,select{width:100%;border:1px solid #d9e3ec;border-radius:12px;padding:13px 14px;font:15px Tahoma,Arial;background:#fff;color:var(--ink);outline:none}
+    input:focus,textarea:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #087fca18}
+    textarea{min-height:110px;resize:vertical}
+    .form-note{font-size:12px;color:var(--muted);margin:10px 0 0}
+    .submit{width:100%;margin-top:16px;background:var(--green);color:#fff;padding:15px}
+    .faq-list{max-width:800px;margin:auto;display:grid;gap:10px}
+    details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 18px}
+    summary{font-weight:800;color:var(--navy);cursor:pointer}
+    details p{color:var(--muted);margin:9px 0 0}
+    footer{background:#041326;color:#d5e4f1;padding:34px 0 100px;text-align:center}
+    footer strong{font-size:20px;color:#fff}footer p{margin:5px 0;color:#a9bfd2;font-size:13px}
+    .mobile-bar{display:none}
+    @media(max-width:800px){
+      .navlinks{display:none}.hero{padding:58px 0 70px}.hero-grid{grid-template-columns:1fr;text-align:center;gap:28px}
+      .hero p{margin-inline:auto}.hero-actions,.hero-points{justify-content:center}.hero-visual{min-height:245px}
+      .signal-card{width:245px}.signal-icon{font-size:78px}.tag-one{right:-18px}.tag-two{left:-18px}
+      .request-grid{grid-template-columns:1fr}.request-info{position:static}.steps{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .container{width:min(100% - 24px,1120px)}.topbar .container{justify-content:center}
+      .nav{height:64px}.brand-mark{width:39px;height:39px}.hero{padding:45px 0 58px}
+      .hero p{font-size:16px}.trust{grid-template-columns:1fr;padding:14px}.trust>div{padding:6px;border-bottom:1px solid var(--line)}.trust>div:last-child{border:0}
+      section{padding:55px 0}.services{grid-template-columns:1fr}.service-card,.form-card,.request-info{padding:21px}
+      .service-options{gap:8px}.service-option{font-size:12px;padding:11px 6px}
+      .mobile-bar{display:flex;position:fixed;z-index:30;bottom:10px;left:12px;right:12px;gap:9px;padding:7px;background:#071b33ed;border:1px solid #ffffff25;border-radius:17px;backdrop-filter:blur(12px);box-shadow:0 10px 30px #0003}
+      .mobile-bar a{flex:1;text-align:center;text-decoration:none;border-radius:12px;padding:10px 6px;font-weight:800;font-size:13px}
+      .mobile-wa{background:#19b86b;color:white}.mobile-call{background:#fff;color:var(--navy)}
+      footer{padding-bottom:105px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+  </style>
 </head>
 <body>
+  <div class="topbar"><div class="container"><span>📍 الجلاوية – ساقلتة – سوهاج</span><span>خدمات راوترات وشبكات وكاميرات مراقبة</span></div></div>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="العودة إلى الرئيسية"><span class="brand-mark">📡</span><span>المهندس أبو داود<small>شبكات • راوترات • كاميرات</small></span></a>
+      <nav class="navlinks" aria-label="القائمة الرئيسية"><a href="#services">الخدمات</a><a href="#how">طريقة الطلب</a><a href="#request">اطلب خدمة</a></nav>
+      <a class="nav-cta" href="#request">اطلب خدمتك الآن ←</a>
+    </div>
+  </header>
 
-<div class="top">
-<h1>المهندس أبو داود</h1>
-<p>برمجة وتركيب الرواتر 📶 | تركيب كاميرات المراقبة 📹</p>
-<span>الجلاوية - ساقلتة - سوهاج</span>
-</div>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">⚡ خدمة فنية داخل الجلاوية وساقلتة وسوهاج</span>
+          <h1>إنترنت أقوى…<br>وأمان يطمنّك</h1>
+          <p>برمجة وتركيب وصيانة الراوترات، وتجهيز كاميرات المراقبة وربطها بالموبايل. ابعت طلبك وهننسّق معاك التفاصيل.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#request">اطلب خدمة الآن</a>
+            <a class="btn btn-outline" href="https://wa.me/201006882309" target="_blank" rel="noopener">تواصل واتساب</a>
+          </div>
+          <div class="hero-points"><span>معاينة وتركيب لحد البيت</span><span>ضمان على الشغل حسب الاتفاق</span><span>أسعار مناسبة</span></div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="signal-card"><div class="signal-icon">📶</div><span class="floating-tag tag-one">شبكة مستقرة</span><span class="floating-tag tag-two">📹 مراقبة على موبايلك</span></div>
+        </div>
+      </div>
+    </section>
 
-<div class="wrap">
-<div class="badge2">✅ معاينة وتركيب لحد البيت - ضمان على الشغل - اسعار على قد الايد</div>
+    <div class="container trust-wrap">
+      <div class="trust">
+        <div><strong>📍 خدمة محلية</strong><span>الجلاوية وساقلتة وسوهاج</span></div>
+        <div><strong>🛠️ تركيب وصيانة</strong><span>للبيوت والمحلات والمزارع</span></div>
+        <div><strong>💬 تواصل مباشر</strong><span>طلبك بيوصل واتساب</span></div>
+      </div>
+    </div>
 
-<div class="card">
-<h2>🌐 الرواتر والنت</h2>
-<p>✔ برمجة كل الرواتر WE - فودافون - اتصالات - اورنج</p>
-<p>✔ ظبط الواي فاي وتقوية الشبكة في البيت كله</p>
-<p>✔ حل مشكلة الفصل والبطء</p>
-<p>✔ تركيب اكسس بوينت وتوسيع التغطية</p>
-<p>✔ حماية الراوتر من الاختراق</p>
-</div>
+    <section id="services">
+      <div class="container">
+        <div class="section-head"><span class="section-kicker">خدماتنا</span><h2>كل اللي تحتاجه لشبكتك وتأمين مكانك</h2><p>اختار الخدمة المناسبة، ولو عندك مشكلة مختلفة اكتبها في نموذج الطلب.</p></div>
+        <div class="services">
+          <article class="service-card"><div class="service-icon">📶</div><h3>الراوترات والإنترنت</h3><p>تجهيز الشبكة وضبط إعدادات الراوتر لتحصل على أفضل أداء ممكن.</p><ul><li>برمجة راوترات WE وفودافون واتصالات وأورنج</li><li>ضبط الواي فاي وتغيير الاسم وكلمة السر</li><li>حل مشاكل الفصل والبطء وضعف التغطية</li><li>تركيب Access Point وتوسيع التغطية</li><li>تأمين إعدادات الشبكة والراوتر</li></ul></article>
+          <article class="service-card"><div class="service-icon">📹</div><h3>كاميرات المراقبة</h3><p>تركيب وتجهيز أنظمة مراقبة تناسب البيت أو المحل أو المزرعة.</p><ul><li>تركيب كاميرات داخلية وخارجية</li><li>تجهيز DVR وربط الكاميرات بالموبايل</li><li>تركيب أو تغيير الهارد وصيانة النظام</li><li>ضبط الرؤية الليلية وجودة الصورة</li><li>تمديد وتنظيم الأسلاك بشكل مرتب</li></ul></article>
+        </div>
+      </div>
+    </section>
 
-<div class="card">
-<h2>📹 كاميرات المراقبة</h2>
-<p>✔ تركيب كاميرات للبيت - المحل - المزرعة - المخزن</p>
-<p>✔ تركيب DVR وربط الكاميرات بالموبايل وتشوفها وانت بره</p>
-<p>✔ صيانة وتركيب هارد وظبط الرؤية الليلية</p>
-<p>✔ تمديد سلوك نضيف من غير بهدلة</p>
-</div>
+    <section class="how" id="how">
+      <div class="container">
+        <div class="section-head"><span class="section-kicker">بكل سهولة</span><h2>اطلب الخدمة في 3 خطوات</h2><p>من غير تعقيد؛ ابعت البيانات وهنكمل معاك على واتساب.</p></div>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><h3>اختار الخدمة</h3><p>حدد راوتر أو كاميرات أو اكتب طلبك بالتفصيل.</p></div>
+          <div class="step"><div class="step-num">2</div><h3>اكتب بياناتك</h3><p>اسمك والمنطقة ووصف مختصر للمشكلة.</p></div>
+          <div class="step"><div class="step-num">3</div><h3>ابعت على واتساب</h3><p>الطلب هيتجهز في رسالة واضحة للتواصل.</p></div>
+        </div>
+      </div>
+    </section>
 
-<div class="card">
-<h2>اطلب خدمتك دلوقتي 👇</h2>
-<p>اختار الخدمة واكتب اسمك والعنوان، وهتتبعتلي واتساب على طول:</p>
-<div class="grid">
-<div class="opt active" onclick="selectService(this,'تركيب راوتر')">📶 تركيب راوتر</div>
-<div class="opt" onclick="selectService(this,'برمجة راوتر')">⚙️ برمجة راوتر</div>
-<div class="opt" onclick="selectService(this,'تركيب كاميرات')">📹 تركيب كاميرات</div>
-<div class="opt" onclick="selectService(this,'صيانة كاميرات')">🔧 صيانة كاميرات</div>
-</div>
-<input id="name" placeholder="اسمك">
-<input id="place" placeholder="العنوان - مثال: الجلاوية">
-<textarea id="msg" placeholder="اكتب مشكلتك او طلبك..."></textarea>
-<button class="btn" onclick="sendWhats()">ابعت الطلب واتساب 💬</button>
-</div>
+    <section id="request">
+      <div class="container">
+        <div class="section-head"><span class="section-kicker">تواصل معنا</span><h2>اطلب خدمتك دلوقتي</h2><p>املأ البيانات التالية، وهيتم فتح واتساب برسالة جاهزة للإرسال.</p></div>
+        <div class="request-grid">
+          <aside class="request-info">
+            <h3>المهندس أبو داود</h3><p>جاهز لمساعدتك في مشاكل الإنترنت وتركيب وصيانة كاميرات المراقبة.</p>
+            <div class="info-line"><span>📍</span><div><b>نطاق الخدمة</b><small>الجلاوية – ساقلتة – سوهاج</small></div></div>
+            <div class="info-line"><span>📞</span><div><b>اتصال مباشر</b><small dir="ltr">01006882309</small></div></div>
+            <div class="info-line"><span>💬</span><div><b>واتساب</b><small>إرسال الطلب مباشرة</small></div></div>
+          </aside>
+          <form class="form-card" id="requestForm">
+            <h3>بيانات طلبك</h3><p>اختار نوع الخدمة واكتب بيانات التواصل.</p>
+            <label>نوع الخدمة</label>
+            <div class="service-options" role="group" aria-label="اختيار نوع الخدمة">
+              <button type="button" class="service-option" data-service="تركيب راوتر" aria-pressed="true">📶 تركيب راوتر</button>
+              <button type="button" class="service-option" data-service="برمجة راوتر" aria-pressed="false">⚙️ برمجة راوتر</button>
+              <button type="button" class="service-option" data-service="تركيب كاميرات" aria-pressed="false">📹 تركيب كاميرات</button>
+              <button type="button" class="service-option" data-service="صيانة كاميرات" aria-pressed="false">🔧 صيانة كاميرات</button>
+              <button type="button" class="service-option" data-service="خدمة أخرى" aria-pressed="false">📝 خدمة أخرى</button>
+            </div>
+            <label for="customerName">الاسم</label><input id="customerName" name="name" autocomplete="name" placeholder="اكتب اسمك" required maxlength="70">
+            <label for="customerPlace">المنطقة / العنوان</label><input id="customerPlace" name="place" autocomplete="street-address" placeholder="مثال: الجلاوية – ساقلتة" required maxlength="120">
+            <label for="customerPhone">رقم موبايلك (اختياري)</label><input id="customerPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="رقم للتواصل معاك" maxlength="20">
+            <label for="customerMsg">تفاصيل الطلب</label><textarea id="customerMsg" name="message" placeholder="اشرح المشكلة أو اكتب تفاصيل الخدمة المطلوبة..." maxlength="1000"></textarea>
+            <button class="btn submit" type="submit">إرسال الطلب على واتساب　💬</button>
+            <p class="form-note">بالضغط على الزر هيفتح واتساب برسالة جاهزة، راجعها واضغط إرسال.</p>
+          </form>
+        </div>
+      </div>
+    </section>
 
-<div style="height:80px"></div>
-</div>
+    <section style="padding-top:10px">
+      <div class="container">
+        <div class="section-head"><span class="section-kicker">أسئلة شائعة</span><h2>قبل ما تطلب</h2></div>
+        <div class="faq-list">
+          <details><summary>هل بتقدموا خدمة في البيت؟</summary><p>متاح المعاينة والتركيب حسب المنطقة والاتفاق، اكتب عنوانك في الطلب لتأكيد إمكانية الخدمة.</p></details>
+          <details><summary>هل ممكن أشوف كاميرات المراقبة من الموبايل؟</summary><p>نعم، يمكن تجهيز النظام وربطه بالموبايل إذا كان الجهاز والإنترنت والإعدادات تدعم ذلك.</p></details>
+          <details><summary>هل بتصلحوا كل أنواع الراوترات؟</summary><p>ابعت نوع الراوتر أو صورته ووصف المشكلة على واتساب علشان نحدد إمكانية حلها.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<div class="float">
-<a class="btn" style="margin:0" href="https://wa.me/201006882309">واتساب</a>
-<a class="btn btn-call" style="margin:0" href="tel:01006882309">اتصل 01006882309</a>
-</div>
+  <footer><div class="container"><strong>المهندس أبو داود</strong><p>برمجة وتركيب الراوترات • كاميرات المراقبة</p><p>الجلاوية – ساقلتة – سوهاج</p><p>© <span id="year"></span> جميع الحقوق محفوظة</p></div></footer>
+  <div class="mobile-bar"><a class="mobile-wa" href="https://wa.me/201006882309" target="_blank" rel="noopener">واتساب 💬</a><a class="mobile-call" href="tel:+201006882309">اتصل الآن 📞</a></div>
 
-<script>
-let service = 'تركيب راوتر';
-function selectService(el, val){
-document.querySelectorAll('.opt').forEach(o=>o.classList.remove('active'));
-el.classList.add('active'); service = val;
-}
-function sendWhats(){
-let name=document.getElementById('name').value;
-let place=document.getElementById('place').value;
-let msg=document.getElementById('msg').value;
-let text = "السلام عليكم يا هندسة%0Aانا " + name + "%0Aالخدمة: " + service + "%0Aالعنوان: " + place + "%0Aالتفاصيل: " + msg;
-window.open("https://wa.me/201006882309?text="+text);
-}
-</script>
+  <script>
+    (() => {
+      const whatsappNumber = "201006882309";
+      let selectedService = "تركيب راوتر";
+      const options = document.querySelectorAll(".service-option");
+      options.forEach((button) => {
+        button.addEventListener("click", () => {
+          selectedService = button.dataset.service;
+          options.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+        });
+      });
+
+      document.getElementById("requestForm").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const name = document.getElementById("customerName").value.trim();
+        const place = document.getElementById("customerPlace").value.trim();
+        const phone = document.getElementById("customerPhone").value.trim();
+        const message = document.getElementById("customerMsg").value.trim();
+
+        if (!name || !place) {
+          alert("من فضلك اكتب الاسم والعنوان.");
+          return;
+        }
+
+        const lines = [
+          "السلام عليكم يا هندسة أبو داود 🌹",
+          "عايز أطلب خدمة من الموقع:",
+          "الاسم: " + name,
+          "الخدمة: " + selectedService,
+          "العنوان: " + place,
+          phone ? "رقم الموبايل: " + phone : "",
+          message ? "التفاصيل: " + message : ""
+        ].filter(Boolean);
+        const url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(lines.join("\n"));
+        window.open(url, "_blank", "noopener,noreferrer");
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      if ("serviceWorker" in navigator && location.protocol !== "file:") {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./sw.js").catch((error) => {
+            console.warn("تعذر تسجيل Service Worker:", error);
+          });
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
